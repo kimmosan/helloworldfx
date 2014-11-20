@@ -6,11 +6,13 @@
 package helloworldfx;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -21,22 +23,52 @@ public class HelloWorldFX extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        // The root is the main layout
+        VBox root = new VBox();
+        
+        // Components for textfield layout
+        Label nameLabel = new Label("Name");
+        //nameLabel.setStyle("-fx-padding:15 0 0 0px");
+        TextField nameField = new TextField();
+        Label addressLabel = new Label("Address");
+        addressLabel.setStyle("-fx-padding:15 0 0 0px");
+        TextField addressField = new TextField();
+        Label phoneLabel = new Label("Phone number");
+        phoneLabel.setStyle("-fx-padding:15 0 0 0px");
+        TextField phoneField = new TextField();
+        
+        // Layout for textfield components
+        VBox textFieldLayout = new VBox();
+        textFieldLayout.getChildren().add(nameLabel);
+        textFieldLayout.getChildren().add(nameField);
+        textFieldLayout.getChildren().add(addressLabel);
+        textFieldLayout.getChildren().add(addressField);
+        textFieldLayout.getChildren().add(phoneLabel);
+        textFieldLayout.getChildren().add(phoneField);
+        textFieldLayout.setStyle("-fx-padding:10px");
+
+        // Components for button layout
+        Button saveBtn = new Button("Save");
+        Button closeBtn = new Button("Close");
+        saveBtn.setStyle("-fx-color:green");
+        closeBtn.setStyle("-fx-color:red");
+        
+        // Layout for buttons
+        HBox buttonLayout = new HBox();
+        buttonLayout.getChildren().add(saveBtn);
+        buttonLayout.getChildren().add(closeBtn);
+        //buttonLayout.setAlignment(Pos.CENTER);
+        buttonLayout.setStyle("-fx-padding:15px; -fx-spacing:10px");
+        
+        // Add layouts to the root layout
+        root.getChildren().add(textFieldLayout);
+        root.getChildren().add(buttonLayout);
+        //root.setAlignment(Pos.CENTER);
         
         Scene scene = new Scene(root, 300, 250);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Idea");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
