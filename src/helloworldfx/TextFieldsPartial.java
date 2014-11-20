@@ -34,4 +34,14 @@ public class TextFieldsPartial extends VBox {
             this.getChildren().add(phoneField);
             //this.setStyle("-fx-padding:10px");
         }
+        
+        public String getName() {
+            return nameField.getText();
+        }
+        public String getAddress() {
+            return addressField.getText();
+        }
+        public String getPhone() {
+            return phoneField.getText();
+        }
 }

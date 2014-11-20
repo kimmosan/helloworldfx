@@ -27,14 +27,20 @@ public class HelloWorldFX extends Application {
         
         // The root is the main layout
         VBox root = new VBox();
-
         
+        TextFieldsPartial textFields = new TextFieldsPartial();
+        UserInfo user = new UserInfo(textFields);
+
+        HBox textAreas = new HBox();
+        VBox.setMargin(textAreas, new Insets(10,10,10,10));
+        textAreas.getChildren().add(textFields);
+        textAreas.getChildren().add(user);
         
         // Add layouts to the root layout
-        root.getChildren().add(new TextFieldsPartial());
-        root.getChildren().add(new ButtonsPartial());
+        root.getChildren().add(textAreas);
+        root.getChildren().add(new ButtonsPartial(user));
         
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 400, 250);
         
         primaryStage.setTitle("Idea");
         primaryStage.setScene(scene);
